@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ham Hyungbin's Business Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* This ensures the image maintains its aspect ratio as the width changes */
+        .card-container {
+            width: 100%;
+            padding-top: 63.29%; /* Aspect ratio of me.jpg (approx. 633px / 1000px). Adjust if your image aspect ratio is different. */
+            position: relative;
+        }
+        .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <header class="flex-grow flex items-center justify-center p-4">
+        <div class="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+            <div class="card-container bg-white rounded-lg shadow-lg overflow-hidden">
+                <img src="me.jpg" alt="Ham Hyungbin Business Card" class="card-image">
+            </div>
+        </div>
+    </header>
+
+    <footer class="p-4 bg-white shadow-md">
+        <div class="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto flex flex-col space-y-4">
+            <button id="copyPhone" class="w-full bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-4 rounded-lg text-lg transition duration-200 ease-in-out">
+                전화번호 복사 (010 3425 3199)
+            </button>
+            <button id="copyEmail" class="w-full bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-4 rounded-lg text-lg transition duration-200 ease-in-out">
+                이메일 복사 (hyungbinh@gmail.com)
+            </button>
+            <button id="copyCardLink" class="w-full bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-4 rounded-lg text-lg transition duration-200 ease-in-out">
+                명함 링크 복사 (bead.im)
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('copyPhone').addEventListener('click', function() {
+            const phoneNumber = '01034253199';
+            navigator.clipboard.writeText(phoneNumber).then(() => {
+                alert('전화번호가 복사되었습니다: ' + phoneNumber);
+            }).catch(err => {
+                console.error('전화번호 복사 실패:', err);
+                alert('전화번호 복사에 실패했습니다.');
+            });
+        });
+
+        document.getElementById('copyEmail').addEventListener('click', function() {
+            const email = 'hyungbinh@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                alert('이메일 주소가 복사되었습니다: ' + email);
+            }).catch(err => {
+                console.error('이메일 복사 실패:', err);
+                alert('이메일 복사에 실패했습니다.');
+            });
+        });
+
+        document.getElementById('copyCardLink').addEventListener('click', function() {
+            const cardLink = 'https://bead.im'; // 명함 링크를 bead.im으로 고정
+            navigator.clipboard.writeText(cardLink).then(() => {
+                alert('명함 링크가 복사되었습니다: ' + cardLink);
+            }).catch(err => {
+                console.error('명함 링크 복사 실패:', err);
+                alert('명함 링크 복사에 실패했습니다.');
+            });
+        });
+    </script>
+</body>
+</html>
